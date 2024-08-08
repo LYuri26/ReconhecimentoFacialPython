@@ -1,6 +1,3 @@
-Claro, aqui está um exemplo de como você pode formatar o README.md para o projeto de reconhecimento facial. 
-
-```markdown
 # Projeto de Reconhecimento Facial
 
 Este projeto realiza o reconhecimento facial usando a biblioteca OpenCV em Python. O programa permite cadastrar novos usuários e realizar o reconhecimento facial em tempo real.
@@ -20,7 +17,9 @@ Clone o repositório do GitHub:
 ```bash
 git clone https://github.com/LYuri26/ReconhecimentoFacialPython.git
 cd ReconhecimentoFacialPython
-```
+Claro! Aqui está o `README.md` ajustado com as informações fornecidas:
+
+```markdown
 
 ### 2. Configure o Ambiente Virtual
 
