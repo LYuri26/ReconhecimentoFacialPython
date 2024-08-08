@@ -107,11 +107,3 @@ Aqui estão algumas soluções para problemas comuns:
 ## Contribuições
 
 Se você deseja contribuir para o projeto, sinta-se à vontade para fazer um fork do repositório e enviar pull requests com suas melhorias.
-
-## Licença
-
-Este projeto está licenciado sob a [MIT License](LICENSE).
-
----
-
-Se precisar de mais alguma modificação, é só avisar!
