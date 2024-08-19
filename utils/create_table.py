@@ -1,18 +1,34 @@
 import mysql.connector
+from mysql.connector import Error
 from utils.my_connection import mysql_get_mydb
 
-cnx = mysql_get_mydb()
-cursor = cnx.cursor()
 
 def create_table(cnx):
     cursor = cnx.cursor()
     try:
-        # cursor.execute("DROP DATABASE Formulario")
-        cursor.execute("CREATE DATABASE IF NOT EXISTS Formulario")
-        cursor.execute("use Formulario")
-        cursor.execute("CREATE TABLE IF NOT EXISTS Pessoas (ID int auto_increment, Nome varchar(50) not null, cpf varchar(50) not null, Email varchar(200) not null, Telefone varchar(20) not null, Data TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP, primary key (id))")        
-    except mysql.connector.Error as err:
-        print("Algo está errado com sua tabela")
+        cursor.execute(
+            "CREATE DATABASE IF NOT EXISTS reconhecimento_facial_senai")
+        cursor.execute("USE reconhecimento_facial_senai")
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS Pessoas (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                nome VARCHAR(50) NOT NULL,
+                sobrenome VARCHAR(50) NOT NULL,
+                email VARCHAR(100) NOT NULL,
+                timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        """)
+    except Error as err:
+        print("Erro ao criar a tabela:")
         print(err)
     else:
         print("Tabela criada com sucesso")
+    finally:
+        cursor.close()
+
+
+if __name__ == "__main__":
+    cnx = mysql_get_mydb()
+    if cnx:
+        create_table(cnx)
+        cnx.close()
