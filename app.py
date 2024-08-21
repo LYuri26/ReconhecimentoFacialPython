@@ -109,9 +109,9 @@ def start_recognition():
         print("Já há uma captura em andamento.")
         return
 
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
     face_cascade = cv2.CascadeClassifier(os.path.join(
-        os.getcwd(), 'haarcascade_frontalface_default.xml'))
+        os.getcwd(), 'C:\ProjetoInovacao\pyForms_OpenCV-MySQL-main\haarcascade_frontalface_default.xml'))
 
     if recognizer is None:
         recognizer = cv2.face.LBPHFaceRecognizer_create()
@@ -157,20 +157,28 @@ def start_recognition():
                     user_id, nome, sobrenome = user_data[0]
                     nameP = f'{nome} {sobrenome}'
                     cv2.putText(frame, f'ID: {
-                                idf}', (x + 5, y + 40), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv2.LINE_AA)
-                    cv2.putText(frame, nameP, (x + 5, y + 25), cv2.FONT_HERSHEY_SIMPLEX,
-                                0.5, (0, 255, 0) if conf < 40 else (0, 0, 255), 1, cv2.LINE_AA)
+                                idf}', (x + 5, y + 190), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1, cv2.LINE_AA)
+                    cv2.putText(frame, nameP, (x + 5, y + 175), cv2.FONT_HERSHEY_SIMPLEX,
+                                0.5, (0, 255, 0)  if conf < 40 else (0, 0, 255), 1, cv2.LINE_AA)
+                    
+                    if conf < 40: cv2.putText(frame, 'Catraca Liberada', (10, 95), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 255, 0), 1, cv2.LINE_AA)
+                    else: cv2.putText(frame, 'Catraca Bloqueada', (10, 115), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 255), 1, cv2.LINE_AA)
+                    
                     cv2.putText(frame, 'Treinado', (10, 65),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 1, cv2.LINE_AA)
+                   
+
+                    
                 else:
                     cv2.putText(frame, 'Desconhecido', (x + 5, y + 25),
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
             else:
-                cv2.putText(frame, 'Não Treinado', (10, 65),
+                cv2.putText(frame, 'Nao Treinado', (10, 65),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
             if saveface:
                 cv2.putText(frame, str(savefaceC), (10, 80),
                             cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 255), 1, cv2.LINE_AA)
+                
                 saveImg(resize, current_id)
                 savefaceC += 1
                 if savefaceC >= 20:
@@ -180,8 +188,7 @@ def start_recognition():
                     close_capture()
                     return
 
-        cv2.putText(frame, "Pressione a tecla 'q' para fechar.", (10, 50),
-                    cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 1, cv2.LINE_AA)
+    
 
         # Converta a imagem do OpenCV para o formato Tkinter
         frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -274,11 +281,11 @@ def open_credits():
     alunos_frame.pack(pady=5)
 
     alunos = [
-        ("Adilson", "#"),
-        ("Bianca", "#"),
-        ("Davi", "#"),
-        ("Gabriel", "#"),
-        ("Sofia", "#")
+        ("Adilson", "https://github.com/JuninnZZ"),
+        ("Bianca", "https://github.com/Bima0l"),
+        ("Davi", "https://github.com/DaviAfons"),
+        ("Gabriel", "https://github.com/NAEzinn"),
+        ("Sofia", "https://github.com/SofiaTressePires")
     ]
 
     for nome, url in alunos:

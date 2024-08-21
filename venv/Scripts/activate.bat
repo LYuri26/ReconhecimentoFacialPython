@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\Lenon\OneDrive - Sistema FIEMG\Documentos\ReconhecimentoFacialPython\venv
+set VIRTUAL_ENV=C:\Users\Projeto de Inovação\Documents\ReconhecimentoFacialPython-main\ReconhecimentoFacialPython-main\venv
 
 if not defined PROMPT set PROMPT=$P$G
 
